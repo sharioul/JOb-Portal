@@ -1,0 +1,163 @@
+{% extends "include/admin_base.html" %}
+{% block body %}
+
+
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Jobs Post</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url "main_admin" %}">Home</a></li>
+        <li class="breadcrumb-item">Jobs</li>
+        <li class="breadcrumb-item active">Job Post</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Jobs Post</h5>
+
+            <!-- General Form Elements -->
+            {% include 'Include/message.html' %}
+            <form action="{% url "job_post" %}" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              
+              <div class="row mb-3">
+                <label for="job_title" class="col-sm-2 col-form-label">Job Title</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="job_title" name="job_title" required placeholder="Please Enter Your Job Title">
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="com_name" class="col-sm-2 col-form-label">Company Name</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="com_name" name="com_name" required placeholder="Please Enter Your Company Name">
+                </div>
+              </div>
+
+
+
+              <div class="row mb-3">
+                <label for="com_email" class="col-sm-2 col-form-label">Company Email</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" id="com_email" name="com_email" required placeholder="Please Enter Your Company Email">
+                </div>
+              </div>
+
+
+              <div class="row mb-3">
+                <label for="com_web" class="col-sm-2 col-form-label">Company Website</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="com_web" name="com_web" required placeholder="Please Enter Your Company Web Site ">
+                </div>
+              </div>
+
+
+              <div class="row mb-3">
+                <label for="com_location" class="col-sm-2 col-form-label">Company Location</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="com_location" name="com_location" required placeholder="Please Enter Your Company Location ">
+                </div>
+              </div>
+
+
+
+
+              <div class="row mb-3">
+                <label for="Salary" class="col-sm-2 col-form-label">Salary</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="Salary" name="Salary" required placeholder="Please Enter salary ">
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="job_Description" class="col-sm-2 col-form-label">Job Description</label>
+                <div class="col-sm-10">
+                  <textarea class="form-control" style="height: 100px"  id="job_Description" name="job_Description" required placeholder="Please Enter Job Description " ></textarea>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="Required_Knowledge_Skills_and_Abilities" class="col-sm-2 col-form-label">Required Knowledge, Skills, and Abilities</label>
+                <div class="col-sm-10">
+                  <textarea class="form-control" style="height: 100px"  id="Required_Knowledge_Skills_and_Abilities" name="Required_Knowledge_Skills_and_Abilities" required placeholder="Please Enter Job Description " ></textarea>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="Education_Experience" class="col-sm-2 col-form-label">Education + Experience</label>
+                <div class="col-sm-10">
+                  <textarea class="form-control" style="height: 100px"  name="Education_Experience" placeholder="Please Enter Job Description " ></textarea>
+                </div>
+              </div>
+            
+
+              <div class="row mb-3">
+                <label for="post_date" class="col-sm-2 col-form-label">Post Date</label>
+                <div class="col-sm-10">
+                  <input type="date" class="form-control" id="post_date" name="post_date" required>
+                </div>
+
+
+              <div class="row mb-3">
+                <label for="Application_date" class="col-sm-2 col-form-label">Application date</label>
+                <div class="col-sm-10">
+                  <input type="date" class="form-control" id="Application_date" name="Application_date" required>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="vacancy" class="col-sm-2 col-form-label">Vacancy </label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="vacancy" name="vacancy" required>
+                </div>
+              </div>
+
+
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Job Type</label>
+                <div class="col-sm-10">
+                  <select class="form-select" id="job_type" name="job_type" multiple aria-label="multiple select example">
+                    <option value="fulltime">Full Time</option>
+                    <option value="parttime">Part time</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="row mb-3">
+                <label for="inputNumber" class="col-sm-2 col-form-label">Company Logo</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="file" id="formFile" id="com_logo" name="com_logo" >
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Submit Button</label>
+                <div class="col-sm-10">
+                  <button type="submit" class="btn btn-primary">Submit Form</button>
+                </div>
+              </div>
+
+            </form><!-- End General Form Elements -->
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main><!-- End #main -->
+
+{% endblock body %}
+
+
+
+

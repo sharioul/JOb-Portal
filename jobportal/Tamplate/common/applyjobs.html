@@ -1,0 +1,31 @@
+<!-- apply_job.html -->
+{% extends "include/base.html" %}
+
+{% block body %}
+<div class="container">
+    <h2>Apply for {{ job_post.job_titel }}</h2>
+    <p>Company: {{ job_post.company_name }}</p>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label for="resume" class="form-label">Upload Your Resume</label>
+            <input type="file" class="form-control" id="resume" name="resume" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="cover_letter" class="form-label">Cover Letter</label>
+            <textarea class="form-control" id="cover_letter" name="cover_letter" rows="5"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="apply_date" class="col-sm-2 col-form-label">Apply Date</label>
+            <div class="col-sm-10">
+              <input type="date" class="form-control" id="apply_date" name="apply_date" required>
+        </div>
+
+
+
+        <button type="submit" class="btn btn-primary">Submit Application</button>
+    </form>
+</div>
+{% endblock %}

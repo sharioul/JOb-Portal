@@ -1,0 +1,182 @@
+{% extends "include/admin_base.html" %}
+
+{% block body %}
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Profile</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url "main_admin" %}">Home</a></li>
+          <li class="breadcrumb-item">Users</li>
+          <li class="breadcrumb-item active">Profile</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+  
+    <section class="section profile">
+      <div class="row">
+        <div class="col-xl-4">
+  
+          <div class="card">
+            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+  
+              <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+              <h2>{{user.username}}</h2>
+              <h3>{{user.Profile_Info.profession}}</h3>
+              <div class="social-links mt-2">
+                <a href="{{request.user.Profile_Info.twitter_url}}" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a href="{{request.user.Profile_Info.facebook_url}}" class="facebook"><i class="bi bi-facebook"></i></a>
+                <a href="{{request.user.Profile_Info.instagram_url}}" class="instagram"><i class="bi bi-instagram"></i></a>
+                <a href="{{request.user.Profile_Info.linkedin_url}}" class="linkedin"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+  
+        <div class="col-xl-8">
+  
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                  <div class="row mb-3">
+                      <label for="usertype" class="col-md-4 col-lg-3 col-form-label">User Type</label>
+                      <div class="col-md-8 col-lg-9">
+                          <h4>{{user.usertype}}</h4>
+                        </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="firstName" class="col-md-4 col-lg-3 col-form-label">First Name</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="first_name" type="text" class="form-control" id="firstName" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="lastname" class="col-md-4 col-lg-3 col-form-label">Last Name</label>
+                  <div class="col-md-8 col-lg-9">
+                      <input name="last_name" type="text" class="form-control" id="last_name" required>
+                  </div>
+              </div>
+                  <div class="row mb-3">
+                      <label for="Profile_Pic" class="col-md-4 col-lg-3 col-form-label">Profile Picture</label>
+                      <div class="col-sm-10">
+                        <input class="form-control" type="file" id="Profile_Pic"  name="Profile_Pic" >
+                      </div>
+                    </div>
+              
+              
+                  <div class="row mb-3">
+                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="fullName" type="text" class="form-control" id="fullName" >
+                    </div>
+                  </div>
+              
+                  <div class="row mb-3">
+                    <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
+                    <div class="col-md-8 col-lg-9">
+                      <textarea name="about" class="form-control" id="about" style="height: 100px"> </textarea>
+                    </div>
+                  </div>
+              
+                  <div class="row mb-3">
+                    <label for="profession" class="col-md-4 col-lg-3 col-form-label">Profession</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="profession" type="text" class="form-control" id="profession" >
+                    </div>
+                  </div>
+              
+              
+                  <div class="row mb-3">
+                    <label for="location" class="col-md-4 col-lg-3 col-form-label">Address</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="location" type="text" class="form-control" id="location" >
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="date_of_birth" class="col-md-4 col-lg-3 col-form-label">date_of_birth</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="date_of_birth" type="date" class="form-control" id="date_of_birth" >
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                      <label class="col-sm-2 col-form-label">Gender</label>
+                      <div class="col-sm-10">
+                        <select class="form-select" id="gender_type" name="gender_type" multiple aria-label="multiple select example">
+                          <option value="male">Male</option>
+                          <option value="female">Female</option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>
+                    </div>
+              
+                  <div class="row mb-3">
+                    <label for="phone_number" class="col-md-4 col-lg-3 col-form-label">Phone</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="phone_number" type="text" class="form-control" id="phone_number" >
+                    </div>
+                  </div>
+              
+                  <div class="row mb-3">
+                    <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="email" type="email" class="form-control" id="email" >
+                    </div>
+                  </div>
+              
+                  <div class="row mb-3">
+                    <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="twitter" type="text" class="form-control" id="Twitter" >
+                    </div>
+                  </div>
+              
+                  <div class="row mb-3">
+                    <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="facebook" type="text" class="form-control" id="Facebook">
+                    </div>
+                  </div>
+              
+                  <div class="row mb-3">
+                    <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="instagram" type="text" class="form-control" id="Instagram">
+                    </div>
+                  </div>
+              
+                  <div class="row mb-3">
+                    <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">Linkedin Profile</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="linkedin" type="text" class="form-control" id="Linkedin">
+                    </div>
+                  </div>
+              
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                  </div>
+              
+              
+              
+              
+              
+              
+             </form><!-- End Profile Edit Form -->
+            
+            
+            
+        </div>
+      </div>
+    </section>
+  
+  </main><!-- End #main -->
+
+
+
+
+
+{% endblock body %}
+

@@ -1,0 +1,112 @@
+{% extends "include/base.html" %}
+
+{% block body %}
+<!-- Hero Area Start-->
+<div class="slider-area">
+    <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="/static/assets/img/hero/about.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center">
+                        <h2>{{ job_post.job_title }}</h2> <!-- Use the job title -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Hero Area End -->
+<!-- job post company Start -->
+<div class="job-post-company pt-120 pb-120">
+    <div class="container">
+        <div class="row justify-content-between">
+            <!-- Left Content -->
+            <div class="col-xl-7 col-lg-8">
+                <!-- job single -->
+                <div class="single-job-items mb-50">
+                    <div class="job-items">
+                        <div class="company-img company-img-details">
+
+                            <a href="#"><img src="{{ job_post.company_logo.url }}" alt=""></a> <!-- Display company logo -->
+                        </div>
+                        <div class="job-tittle">
+                            <a href="#">
+                                <h4>{{ job_post.job_title }}</h4>
+                            </a>
+                            <ul>
+                                <li>{{ job_post.company_name }}</li>
+                                <li><i class="fas fa-map-marker-alt"></i>{{ job_post.company_location }}</li>
+                                <li>${{ job_post.salary }}</li> <!-- Use the salary field -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- job single End -->
+                <div class="job-post-details">
+                    <div class="post-details1 mb-50">
+                        <!-- Small Section Tittle -->
+                        <div class="small-section-tittle">
+                            <h4>Job Description</h4>
+                        </div>
+                        <p>{{ job_post.job_description }}</p> <!-- Use job description -->
+                    </div>
+                    <div class="post-details2 mb-50">
+                        <!-- Small Section Tittle -->
+                        <div class="small-section-tittle">
+                            <h4>Required Knowledge, Skills, and Abilities</h4>
+                        </div>
+                        <ul>
+                            <li>{{ job_post.required_knowledge }}</li> <!-- Display required knowledge -->
+                        </ul>
+                    </div>
+                    <div class="post-details2 mb-50">
+                        <!-- Small Section Tittle -->
+                        <div class="small-section-tittle">
+                            <h4>Education + Experience</h4>
+                        </div>
+                        <ul>
+                            <li>{{ job_post.education_experience }}</li> <!-- Display education and experience -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Content -->
+            <div class="col-xl-4 col-lg-4">
+                <div class="post-details3 mb-50">
+                    <!-- Small Section Tittle -->
+                    <div class="small-section-tittle">
+                        <h4>Job Overview</h4>
+                    </div>
+                    <ul>
+                        <li>Posted date: <span>{{ job_post.post_date }}</span></li>
+                        <li>Location: <span>{{ job_post.company_location }}</span></li>
+                        <li>Vacancy: <span>{{ job_post.vacancy }}</span></li>
+                        <li>Job nature: <span>{{ job_post.job_type }}</span></li>
+                        <li>Salary: <span>${{ job_post.salary }} yearly</span></li>
+                        <li>Application date: <span>{{ job_post.application_date }}</span></li>
+                    </ul>
+                    {% if request.user.usertype == "Job_seckeer" %}
+                    <div class="apply-btn2">
+                            <a href="{% url "apply_job" job_post.id %}" class="btn">Apply Now</a>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="post-details4 mb-50">
+                    <!-- Small Section Tittle -->
+                    <div class="small-section-tittle">
+                        <h4>Company Information</h4>
+                    </div>
+                    <span>{{ job_post.company_name }}</span>
+                    <p>{{ job_post.company_description }}</p> <!-- If you have a company description -->
+                    <ul>
+                        <li>Name: <span>{{ job_post.company_name }}</span></li>
+                        <li>Web: <span>{{ job_post.company_web }}</span></li>
+                        <li>Email: <span>{{ job_post.company_email }}</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- job post company End -->
+{% endblock body %}
